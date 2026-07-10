@@ -1,293 +1,341 @@
-# Lehmannludwig54-lang.github.io
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouthJobX – Next-Gen Teen Job Platform</title>
+    <title>YouthJobX Portal</title>
     <style>
         :root {
-            --primary: #4f46e5;
-            --primary-hover: #4338ca;
-            --secondary: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --dark: #1f2937;
-            --light: #f3f4f6;
-            --border: #e5e7eb;
+            --black: #000000;
+            --dark-grey: #222222;
+            --grey: #757575;
+            --light-grey: #f5f5f5;
+            --border-grey: #e0e0e0;
+            --white: #ffffff;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
         }
 
         body {
-            background-color: #f9fafb;
-            color: var(--dark);
+            background-color: var(--white);
+            color: var(--black);
             display: flex;
             height: 100vh;
             overflow: hidden;
         }
 
-        /* Sidebar Navigation */
+        /* Minimalist Sidebar */
         aside {
-            width: 260px;
-            background-color: white;
-            border-right: 1px solid var(--border);
+            width: 280px;
+            background-color: var(--white);
+            border-right: 1px solid var(--border-grey);
             display: flex;
             flex-direction: column;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         .logo {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            padding-left: 10px;
         }
 
         .nav-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
             flex-grow: 1;
         }
 
         .nav-btn {
-            padding: 12px 16px;
+            padding: 12px 14px;
             border: none;
             background: none;
-            border-radius: 8px;
+            border-radius: 4px;
             text-align: left;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 500;
             cursor: pointer;
-            color: #4b5563;
-            transition: 0.2s;
+            color: var(--grey);
+            transition: all 0.15s ease;
         }
 
         .nav-btn.active, .nav-btn:hover {
-            background-color: var(--light);
-            color: var(--primary);
+            background-color: var(--light-grey);
+            color: var(--black);
+            font-weight: 600;
         }
 
-        /* Main Content Windows */
+        /* Main Workspace Window */
         main {
             flex-grow: 1;
-            padding: 40px;
+            padding: 50px;
             overflow-y: auto;
-            position: relative;
+            background-color: var(--white);
         }
 
         .view-section {
             display: none;
+            max-width: 900px;
         }
 
         .view-section.active {
             display: block;
         }
 
-        h1 { font-size: 28px; margin-bottom: 10px; color: var(--dark); }
-        p.subtitle { color: #6b7280; margin-bottom: 30px; }
+        h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+        p.subtitle { color: var(--grey); font-size: 14px; margin-bottom: 35px; }
 
-        /* Component Cards & Boxes */
+        /* Structure Blocks & Cards */
         .card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            background: var(--white);
+            border: 1px solid var(--border-grey);
+            border-radius: 4px;
+            padding: 30px;
+            margin-bottom: 30px;
         }
 
-        .alert-box {
-            background-color: #fffbeb;
-            border: 1px solid #fde68a;
-            color: #b45309;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 20px;
+        .alert-countdown {
+            background-color: var(--black);
+            color: var(--white);
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 500;
+            font-size: 14px;
         }
 
-        /* Forms & Interactive Items */
-        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; }
+        /* Onboarding Selection Blocks */
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .role-card {
+            border: 1px solid var(--border-grey);
+            padding: 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border 0.2s ease;
+        }
+
+        .role-card:hover {
+            border-color: var(--black);
+        }
+
+        .role-card h3 { font-size: 16px; margin-bottom: 8px; }
+        .role-card p { font-size: 13px; color: var(--grey); line-height: 1.4; }
+
+        /* Form Controls */
+        label { display: block; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
         input, select, textarea {
-            width: 100%; padding: 12px; border: 1px solid var(--border);
-            border-radius: 8px; margin-bottom: 20px; font-size: 14px; background: white;
+            width: 100%; padding: 12px; border: 1px solid var(--border-grey);
+            border-radius: 4px; margin-bottom: 24px; font-size: 14px; background: var(--white);
+            color: var(--black);
+            transition: border 0.15s ease;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none; border-color: var(--black);
         }
         
-        button.btn {
-            background-color: var(--primary); color: white; border: none;
-            padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s;
+        /* Buttons */
+        button.btn-black {
+            background-color: var(--black); color: var(--white); border: 1px solid var(--black);
+            padding: 12px 24px; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.15s ease;
         }
-        button.btn:hover { background-color: var(--primary-hover); }
-        button.btn-success { background-color: var(--secondary); }
+        button.btn-black:hover { background-color: var(--dark-grey); }
+        
+        button.btn-outline {
+            background-color: transparent; color: var(--black); border: 1px solid var(--black);
+            padding: 12px 24px; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer;
+        }
 
-        /* Chat System Grid Layout */
+        /* DM Workspace Framework */
         .chat-container {
             display: grid;
-            grid-template-columns: 1fr 320px;
-            height: 500px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: white;
-            overflow: hidden;
+            grid-template-columns: 1fr 300px;
+            height: 480px;
+            border: 1px solid var(--border-grey);
+            border-radius: 4px;
+            background: var(--white);
         }
 
         .chat-messages {
-            padding: 20px;
+            padding: 24px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            background: #f9fafb;
+            gap: 16px;
+            background: var(--light-grey);
         }
 
-        .msg { max-width: 70%; padding: 12px 16px; border-radius: 12px; font-size: 14px; line-height: 1.4; }
-        .msg.incoming { background: white; border: 1px solid var(--border); align-self: flex-start; }
-        .msg.outgoing { background: var(--primary); color: white; align-self: flex-end; }
-        .msg.contract { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; align-self: flex-start; }
+        .msg { max-width: 75%; padding: 12px 16px; border-radius: 4px; font-size: 14px; line-height: 1.4; }
+        .msg.incoming { background: var(--white); border: 1px solid var(--border-grey); align-self: flex-start; }
+        .msg.outgoing { background: var(--black); color: var(--white); align-self: flex-end; }
+        .msg.contract-payload { background: var(--white); border: 2px solid var(--black); align-self: flex-start; width: 100%; }
 
         .chat-sidebar {
-            border-left: 1px solid var(--border);
-            padding: 20px;
-            background: white;
+            border-left: 1px solid var(--border-grey);
+            padding: 24px;
+            background: var(--white);
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
-        /* Badges */
-        .badge {
-            display: inline-block; padding: 4px 10px; border-radius: 12px;
-            font-size: 12px; font-weight: bold; background: var(--light); color: var(--dark);
+        /* Mono Elements Labels */
+        .mono-tag {
+            display: inline-block; padding: 4px 8px; border-radius: 2px;
+            font-size: 11px; font-weight: 600; background: var(--light-grey); color: var(--black);
+            border: 1px solid var(--border-grey);
+            text-transform: uppercase;
         }
-        .badge.ai { background-color: #e0e7ff; color: var(--primary); }
     </style>
 </head>
 <body>
 
     <aside>
-        <div class="logo">YouthJobX 🚀</div>
+        <div class="logo">YouthJobX //</div>
         <div class="nav-group">
-            <button class="nav-btn active" onclick="switchView('assessment')">1. AI Assessment Quiz</button>
-            <button class="nav-btn" onclick="switchView('profile')">2. Mandatory Profile Setup</button>
-            <button class="nav-btn" onclick="switchView('dashboard')">3. Teen Employee Dashboard</button>
-            <button class="nav-btn" onclick="switchView('employer')">4. Employer DM & Contract Area</button>
+            <button class="nav-btn active" onclick="switchView('registration')">01 / Account Type</button>
+            <button class="nav-btn" onclick="switchView('assessment')">02 / AI Competency Quiz</button>
+            <button class="nav-btn" onclick="switchView('profile')">03 / Profile Integration</button>
+            <button class="nav-btn" onclick="switchView('dashboard')">04 / Employee Dashboard</button>
+            <button class="nav-btn" onclick="switchView('employer')">05 / Corporate Workspace</button>
         </div>
     </aside>
 
     <main>
 
-        <section id="assessment" class="view-section active">
-            <h1>Initial AI Career Assessment</h1>
-            <p class="subtitle">Complete this mandatory query session so our AI model can evaluate your strategic skills and place you in the right working industry.</p>
+        <section id="registration" class="view-section active">
+            <h1>Select Portal Destination</h1>
+            <p class="subtitle">Define your system level role access parameters to populate your workspace environment.</p>
+            
+            <div class="role-grid">
+                <div class="role-card" onclick="switchView('assessment')">
+                    <h3>Teen Employee</h3>
+                    <p>Ages 13-18. Complete tactical quizzes, store verified video data streams, and evaluate job contracts.</p>
+                </div>
+                <div class="role-card" onclick="switchView('employer')">
+                    <h3>Private Individual</h3>
+                    <p>Post small-scale local yard tasks, property maintenance help, or household assignments with locked wages.</p>
+                </div>
+                <div class="role-card" onclick="switchView('employer')">
+                    <h3>Verified Company</h3>
+                    <p>Corporate access pipelines. Browse vetted teen profiles and instantly distribute legal direct contract modules.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="assessment" class="view-section">
+            <h1>Automated AI Skill Placement</h1>
+            <p class="subtitle">Complete the problem analysis sequence. Our neural parser routing engine will categorize your tactical industry match.</p>
             
             <div class="card" id="quiz-card">
-                <form id="assessmentForm" onsubmit="runAIAssessment(event)">
-                    <label>Question 1: If a customer complains that an automated delivery was wrong, how do you respond?</label>
-                    <textarea required placeholder="Write your task response here..."></textarea>
+                <form onsubmit="runAIAssessment(event)">
+                    <label>Scenario Evaluator: A customer order encounters processing delays. Detail your automated tracking adjustments.</label>
+                    <textarea required placeholder="Input tactical text parameters..." rows="4"></textarea>
 
-                    <label>Question 2: What area of daily work tasks interests you the most?</label>
+                    <label>Primary Field of Work Focus Selection</label>
                     <select id="pref-sector">
-                        <option value="Tech Support & Digital">Tech Assistance & Coding Support</option>
-                        <option value="Creative & Marketing">Social Media & Creative Assets</option>
-                        <option value="Local Commerce & Logistics">Organization, Warehousing & Local Help</option>
+                        <option value="Logistics & Local Help">Logistics, Property Management & Local Help</option>
+                        <option value="Media & Creative Assets">Media, Editing & Digital Creative Assets</option>
+                        <option value="Technical Operations">Technical Operations & Computational Support</option>
                     </select>
 
-                    <button type="submit" class="btn">Process with AI Engine</button>
+                    <button type="submit" class="btn-black">Execute Analysis Engine</button>
                 </form>
             </div>
 
             <div class="card" id="quiz-result" style="display:none;">
-                <h3 style="color: var(--secondary); margin-bottom: 10px;">✔ Evaluation Complete</h3>
-                <p>Based on your task execution matrices, the AI has flagged you for the following sector:</p>
-                <div style="margin: 15px 0;"><span class="badge ai" id="assigned-badge" style="font-size: 16px; padding: 8px 16px;">Processing...</span></div>
-                <button class="btn" onclick="switchView('profile')">Proceed to Profile Verification</button>
+                <h3 style="margin-bottom: 12px; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px;">✔ Evaluation Processing Node Successful</h3>
+                <p style="font-size: 15px; margin-bottom: 20px;">The AI Engine has indexed your profile parameters to the following structural match category:</p>
+                <div style="margin-bottom: 25px;"><span class="mono-tag" id="assigned-badge" style="font-size: 14px; padding: 6px 12px;">Allocating...</span></div>
+                <button class="btn-black" onclick="switchView('profile')">Initialize Mandatory Document Setup</button>
             </div>
         </section>
 
         <section id="profile" class="view-section">
-            <h1>Mandatory Upload Profiles</h1>
-            <p class="subtitle">Teen users must maintain verified documentation at all times. Failure to upload will auto-lock your profile validation statuses every 30 days.</p>
+            <h1>Mandatory Authentication Files</h1>
+            <p class="subtitle">Employee accounts must maintain active links to validation streams. Profiling vectors refresh automatically every 30 days.</p>
             
             <div class="card">
                 <form onsubmit="saveProfileData(event)">
-                    <label>Applicant Legal Full Name</label>
+                    <label>Legal Identification Name</label>
                     <input type="text" id="p-name" value="Alex Mercer" required>
 
-                    <label>Current Residential Address</label>
+                    <label>Primary Residence Location</label>
                     <input type="text" id="p-address" value="42 Innovation Way, Metro City" required>
 
-                    <label>Verified Age</label>
+                    <label>Age Verification Field (Locked scope 13-18)</label>
                     <input type="number" id="p-age" value="16" min="13" max="18" required>
 
-                    <label>Mandatory 1-Minute Application Video Link (YouTube, Vimeo, etc.)</label>
-                    <input type="url" id="p-video" placeholder="https://www.youtube.com/watch?v=..." required>
+                    <label>Required 1-Minute Pitch Video Data Link</label>
+                    <input type="url" id="p-video" placeholder="https://video-storage.com/stream/..." required>
 
-                    <label>Academic Certificates Link (Cloud Storage File)</label>
-                    <input type="url" id="p-cert" placeholder="https://drive.google.com/file/..." required>
+                    <label>Academic & Verification Documents Folder Link</label>
+                    <input type="url" id="p-cert" placeholder="https://secure-drive.com/docs/..." required>
 
-                    <button type="submit" class="btn">Update Upload Vectors</button>
+                    <button type="submit" class="btn-black">Commit Asset Matrix</button>
                 </form>
             </div>
         </section>
 
         <section id="dashboard" class="view-section">
-            <h1>Teen Dashboard Hub</h1>
-            <p class="subtitle">Overview of your verification timelines and matching industrial listings.</p>
+            <h1>Employee Core Dashboard</h1>
+            <p class="subtitle">System notifications, compliance clocks, and system metrics oversight.</p>
 
-            <div class="alert-box">
+            <div class="alert-countdown">
                 <div>
-                    <strong>⏳ Profile Verification Lifespan:</strong> You have <span id="days-left">30</span> days left to renew your video/certificates before system visibility drops to hidden.
+                    <strong>⏳ Data Longevity Alert:</strong> Your profiles require monthly data verification. System hiding processes trigger automatically in <span id="days-left" style="font-weight: 700; text-decoration: underline;">30</span> days.
                 </div>
-                <button class="btn btn-success" style="padding: 6px 12px; font-size: 12px;" onclick="switchView('profile')">Renew Now</button>
+                <button class="btn-outline" style="background: var(--white); color: var(--black); padding: 6px 12px; font-size: 11px; text-transform: uppercase; font-weight: 700;" onclick="switchView('profile')">Update System Now</button>
             </div>
 
             <div class="card">
-                <h3>Your Core Parameters Matrix</h3>
-                <div style="margin-top: 15px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-                    <div><strong>AI Domain:</strong> <span id="dash-ai" class="badge ai">Run Quiz First</span></div>
-                    <div><strong>Video Data Link:</strong> <span id="dash-video" style="color:var(--danger)">Missing Data</span></div>
-                    <div><strong>Certificates Link:</strong> <span id="dash-cert" style="color:var(--danger)">Missing Data</span></div>
+                <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 20px;">Vetted Parameter Verification Status</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div><label>AI Domain Assignment</label><span id="dash-ai" class="mono-tag">Execute Stage 02</span></div>
+                    <div><label>Video Array Link</label><span id="dash-video" style="font-size: 13px; color: var(--grey);">Not Synchronized</span></div>
+                    <div><label>Certificates Link</label><span id="dash-cert" style="font-size: 13px; color: var(--grey);">Not Synchronized</span></div>
                 </div>
             </div>
         </section>
 
         <section id="employer" class="view-section">
-            <h1>Direct Message Command Center</h1>
-            <p class="subtitle">Secure workspace environment where companies communicate and process locked legal payloads.</p>
+            <h1>Secure Communication Desk</h1>
+            <p class="subtitle">Encrypted workplace channel. Review user media matrices and deploy locked, automated legal contracts.</p>
 
             <div class="chat-container">
                 <div class="chat-messages" id="chatBox">
-                    <div class="msg incoming">Hello Alex! We checked out your AI evaluation score and watched your application video. We want to bring you onto our team for the next phase.</div>
-                    <div class="msg outgoing">Awesome! I'm ready to work. What are the next steps?</div>
+                    <div class="msg incoming">Hello Alex, we have reviewed your analytical profile and application pitch media. We wish to establish a working pipeline.</div>
+                    <div class="msg outgoing">Understood. I am prepared to initialize operations. Please distribute the platform agreements.</div>
                 </div>
 
                 <div class="chat-sidebar">
-                    <h3>Action Panel</h3>
-                    <p style="font-size: 13px; color: #4b5563;">As an employer, you can execute an automated contract. The system locks down wages to ensure non-negotiable compliant terms.</p>
+                    <h3 style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Operational Engine</h3>
+                    <p style="font-size: 12px; color: var(--grey); line-height: 1.4;">Wages are strictly system enforced and fully locked out from external negotiation procedures.</p>
                     
-                    <hr style="border: 0; border-top: 1px solid var(--border);">
-                    
-                    <div>
-                        <label style="margin-bottom: 2px;">Fixed Hourly Compensation</label>
-                        <div style="font-size: 18px; font-weight: bold; color: var(--dark); background: var(--light); padding: 10px; border-radius: 6px;">
-                            $15.50 / hr <span class="badge" style="vertical-align: middle; margin-left:5px;">Locked</span>
+                    <div style="margin-top: 10px;">
+                        <label>Compensation Index</label>
+                        <div style="font-size: 16px; font-weight: 700; background: var(--light-grey); padding: 12px; border: 1px solid var(--border-grey); border-radius: 4px;">
+                            $15.50 / hr <span class="mono-tag" style="float: right; margin-top: 1px;">Enforced</span>
                         </div>
                     </div>
 
-                    <button class="btn" style="width: 100%; margin-top: auto;" onclick="generateAIContract()">⚡ Send AI Contract</button>
+                    <button class="btn-black" style="width: 100%; margin-top: auto; padding: 14px;" onclick="generateAIContract()">⚡ Send AI Contract</button>
                 </div>
             </div>
         </section>
@@ -295,7 +343,6 @@
     </main>
 
     <script>
-        // Global State Simulation
         let userProfile = {
             name: "Alex Mercer",
             address: "42 Innovation Way, Metro City",
@@ -306,29 +353,30 @@
             daysRemaining: 30
         };
 
-        // Navigation Engine
         function switchView(viewId) {
             document.querySelectorAll('.view-section').forEach(section => section.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
             
             document.getElementById(viewId).classList.add('active');
-            event.target.classList.add('active');
+            
+            // Highlight button correctly depending on target view routing index
+            const buttons = Array.from(document.querySelectorAll('.nav-btn'));
+            const matchedBtn = buttons.find(btn => btn.getAttribute('onclick').includes(viewId));
+            if(matchedBtn) matchedBtn.classList.add('active');
             
             updateDashboardDOM();
         }
 
-        // Section 1 Logic: AI Parser Simulator
         function runAIAssessment(event) {
             event.preventDefault();
-            const sectorElement = document.getElementById('pref-sector');
-            userProfile.aiSector = sectorElement.options[sectorElement.selectedIndex].text;
+            const sectorSelector = document.getElementById('pref-sector');
+            userProfile.aiSector = sectorSelector.options[sectorSelector.selectedIndex].text;
             
             document.getElementById('quiz-card').style.display = 'none';
             document.getElementById('quiz-result').style.display = 'block';
             document.getElementById('assigned-badge').innerText = userProfile.aiSector;
         }
 
-        // Section 2 Logic: Storage Simulator
         function saveProfileData(event) {
             event.preventDefault();
             userProfile.name = document.getElementById('p-name').value;
@@ -337,54 +385,47 @@
             userProfile.videoUrl = document.getElementById('p-video').value;
             userProfile.certUrl = document.getElementById('p-cert').value;
             
-            // Simulating update reset of the monthly requirement rule
-            userProfile.daysRemaining = 30; 
+            userProfile.daysRemaining = 30; // Clock reset triggers on upload commitment
             
-            alert("Verification Payload Saved. Data clock reset to 30 days.");
+            alert("Verification payload synchronized. Compliance timer tracking reset to 30 days.");
             switchView('dashboard');
         }
 
-        // Section 3 Logic: DOM Syncer
         function updateDashboardDOM() {
             document.getElementById('days-left').innerText = userProfile.daysRemaining;
-            document.getElementById('dash-ai').innerText = userProfile.aiSector ? userProfile.aiSector : "Pending Quiz";
+            document.getElementById('dash-ai').innerText = userProfile.aiSector ? userProfile.aiSector : "Awaiting Data";
             
-            const vSpan = document.getElementById('dash-video');
-            if(userProfile.videoUrl) { vSpan.innerText = "Active Link Verified"; vSpan.style.color = "var(--secondary)"; }
+            const videoSpan = document.getElementById('dash-video');
+            if(userProfile.videoUrl) { videoSpan.innerText = "Verified Link Active"; videoSpan.style.color = "var(--black)"; videoSpan.style.fontWeight = "bold"; }
             
-            const cSpan = document.getElementById('dash-cert');
-            if(userProfile.certUrl) { cSpan.innerText = "Active Document Linked"; cSpan.style.color = "var(--secondary)"; }
+            const certSpan = document.getElementById('dash-cert');
+            if(userProfile.certUrl) { certSpan.innerText = "Verified Storage Active"; certSpan.style.color = "var(--black)"; certSpan.style.fontWeight = "bold"; }
         }
 
-        // Section 4 Logic: Automated AI Contract Generator Engine
         function generateAIContract() {
             const chatBox = document.getElementById('chatBox');
-            
-            // Simulation of AI executing content blocks asynchronously
-            const systemMessage = document.createElement('div');
-            systemMessage.className = 'msg contract';
-            systemMessage.innerHTML = `
-                <strong>📜 AUTOMATED LABOR CONTRACT GENERATED (AI)</strong><br>
-                <small>Auto-Filled Teen Registry Entities:</small><br>
-                • <strong>Employee:</strong> ${userProfile.name}<br>
-                • <strong>Age Group:</strong> ${userProfile.age} Years Old<br>
-                • <strong>Registered Domicile:</strong> ${userProfile.address}<br>
-                <hr style="margin: 8px 0; border:0; border-top:1px solid #a7f3d0;">
-                • <strong>Wage Rate:</strong> $15.50/hr <span style="font-size:11px; font-weight:normal;">(System Enforced / Non-Negotiable)</span><br><br>
-                <button class="btn btn-success" style="padding: 6px 12px; font-size:12px; width:100%; border:0; border-radius:4px; font-weight:bold; cursor:pointer;" onclick="alert('Contract digitally signed!')">Execute Digital Signature</button>
+            const contractMsg = document.createElement('div');
+            contractMsg.className = 'msg contract-payload';
+            contractMsg.innerHTML = `
+                <div style="font-weight: 800; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; margin-bottom: 10px;">// SYSTEM AI GENERATED CONTRACT MODULE //</div>
+                <div style="font-size: 13px; color: var(--dark-grey); line-height: 1.5; margin-bottom: 15px;">
+                    This file registers a work intent binding between the issuing verification firm and employee <strong>${userProfile.name}</strong> (${userProfile.age} Y/O), localized at <strong>${userProfile.address}</strong>.<br><br>
+                    Wages are absolute and locked by the system kernel core to: <strong>$15.50/hr</strong>.
+                </div>
+                <button class="btn-black" style="width: 100%; padding: 8px; font-size: 11px; text-transform: uppercase;" onclick="alert('Contract digitally confirmed.')">Execute Digital Signature Block</button>
             `;
-            
-            chatBox.appendChild(systemMessage);
+            chatBox.appendChild(contractMsg);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        // Simple Background Simulator Loop
+        // Mock System Verification Countdown Clock Loop
         setInterval(() => {
             if(userProfile.daysRemaining > 1) {
                 userProfile.daysRemaining--;
-                document.getElementById('days-left').innerText = userProfile.daysRemaining;
+                const counterNode = document.getElementById('days-left');
+                if(counterNode) counterNode.innerText = userProfile.daysRemaining;
             }
-        }, 15000); // Speeds down timeline for demonstration purposes
+        }, 20000);
     </script>
 </body>
 </html>
