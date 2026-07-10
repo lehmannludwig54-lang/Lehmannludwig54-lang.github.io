@@ -26,7 +26,7 @@
             color: var(--black);
             display: flex;
             height: 100vh;
-            overflow: hidden;
+            overflow: hidden; /* Keeps the main window fitting the browser window */
         }
 
         /* Minimalist Sidebar */
@@ -37,6 +37,7 @@
             display: flex;
             flex-direction: column;
             padding: 30px 20px;
+            flex-shrink: 0; /* Prevents sidebar from squishing */
         }
 
         .logo {
@@ -74,17 +75,19 @@
             font-weight: 600;
         }
 
-        /* Main Workspace Window */
+        /* Fixed Scrolling Workspace Window */
         main {
             flex-grow: 1;
             padding: 50px;
-            overflow-y: auto;
+            overflow-y: auto; /* ENABLES SCROLLING inside your main panel */
             background-color: var(--white);
+            height: 100vh;
         }
 
         .view-section {
             display: none;
             max-width: 900px;
+            padding-bottom: 60px; /* Gives padding at the bottom of a scrollable page */
         }
 
         .view-section.active {
